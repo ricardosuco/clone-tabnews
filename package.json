@@ -4,7 +4,7 @@
   "description": "Implementação do http://tabnews.com.br para o https://curso.dev",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run services:up && next dev",
+    "dev": "npm run services:up && npm run wait-for-postgres && migration:up && next dev",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "jest ",
@@ -15,7 +15,8 @@
     "services:logs": "docker compose -f infra/compose.yaml logs -f",
     "services:recreate": "docker compose -f infra/compose.yaml up -d --force-recreate",
     "migration:create": "node-pg-migrate -m infra/migrations create",
-    "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up"
+    "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up",
+    "wait-for-postgres": "node  infra/scripts/wait-for-postgres.js"
   },
   "keywords": [],
   "author": "",
