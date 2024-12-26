@@ -1,10 +1,11 @@
-import database from "infra/database.js"; 
+import database from "infra/database.js";
+import orchestrator from "tests/orchestrator";
 
-async function cleanDatabase() {
+beforeAll(async () => {
+  await orchestrator.waitForAllServices();
   await database.query("DROP SCHEMA public CASCADE; CREATE SCHEMA public;");
-}
+});
 
-beforeAll(cleanDatabase);
 
 test("GET to /api/v1/migrations status should return 200", async () => {
   const response = await fetch("http://localhost:3000/api/v1/migrations");
@@ -12,6 +13,6 @@ test("GET to /api/v1/migrations status should return 200", async () => {
 
   const responseBody = await response.json();
 
-  expect(Array.isArray(responseBody)).toBe(true)
-  expect(responseBody.length).toBeGreaterThan(0)
+  expect(Array.isArray(responseBody)).toBe(true);
+  expect(responseBody.length).toBeGreaterThan(0);
 });
