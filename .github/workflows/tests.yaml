@@ -1,0 +1,18 @@
+name: Automated Tests
+
+on: pull_request #Escuta eventos para executar uma ação, também aceita um array de eventos.
+
+jobs:
+  jest:
+    name: Jest Ubuntu
+    runs-on: ubuntu-latest #Define o runner, o sistema que vai rodar os testes
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.20.5
+      
+      - run: npm ci
+
+      - run: npm test
