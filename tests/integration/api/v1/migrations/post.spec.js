@@ -1,6 +1,6 @@
-import database from "infra/database.js"; 
+import database from "infra/database.js";
 import { join } from "node:path";
-import  fs  from "node:fs/promises";
+import fs from "node:fs/promises";
 import orchestrator from "tests/orchestrator";
 
 beforeAll(async () => {
