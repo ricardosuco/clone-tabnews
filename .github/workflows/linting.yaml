@@ -29,14 +29,14 @@ jobs:
       - run: npm ci
 
       - run: npm run lint:eslint:check
-  
+
   commitlint:
     name: Commit Lint
     runs-on: ubuntu-latest #Define o runner, o sistema que vai rodar os testes
     steps:
       - uses: actions/checkout@v4
         with:
-            fetch-depth: 0
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
