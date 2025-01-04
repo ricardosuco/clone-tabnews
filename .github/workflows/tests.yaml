@@ -7,12 +7,12 @@ jobs:
     name: Jest Ubuntu
     runs-on: ubuntu-latest #Define o runner, o sistema que vai rodar os testes
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4 # São como macros/extensões que simplifica tarefa repetitiva. Peças pré-programadas para integrar ao workflow, no caso do checkout, se encarrega de acessar a versão especifica do PR no ambiente do CI
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4 # Essa action permite a configuração do node dentro do ambiente de CI
         with:
           node-version: 18.20.5
 
-      - run: npm ci
+      - run: npm ci # 'npm ci' ao invés do 'npm install' porque faz com que os pacotes intalados sejam exatamente os mesmos declardos no package.lock.json.
 
       - run: npm test
