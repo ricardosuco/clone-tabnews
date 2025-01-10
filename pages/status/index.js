@@ -45,5 +45,5 @@ function UpdatedAt() {
       <div>Limite de conexões permitidas: {maxConnections}</div>
       <div>Total de conexões abertas: {openedConnections}</div>
     </>
-  )
+  );
 }
